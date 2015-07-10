@@ -1,4 +1,6 @@
-FROM java:8
-COPY ../../../target/service-discovery-demo-0.0.1-SNAPSHOT.jar /service-discovery-demo-0.0.1-SNAPSHOT.jar
+FROM develar/java
+
+ADD https://s3-us-west-2.amazonaws.com/akerekes-dcos-jar-repo/service-discovery-demo-0.0.1-SNAPSHOT.jar /service-discovery-demo-0.0.1-SNAPSHOT.jar
 WORKDIR /
-CMD ["java", "-cp", "service-discovery-demo-0.0.1-SNAPSHOT.jar", "demo.RandomNumberApplication"]
+EXPOSE 8080
+CMD ["-jar", "/service-discovery-demo-0.0.1-SNAPSHOT.jar", "--spring.config.name=randomnumber-application"]
