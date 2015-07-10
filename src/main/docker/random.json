@@ -1,0 +1,16 @@
+{
+    "id": "/random", 
+    "cpus": 1,
+    "mem": 2048,
+    "instances": 1,
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "network": "HOST",
+        "image": "akerekes/mesos-spring-service-discovery",
+        "forcePullImage": true
+      }
+    },
+    "cmd": "java -jar /service-discovery-demo-0.0.1-SNAPSHOT.jar --spring.config.name=randomnumber-application --server.port=$PORT --eureka.client.serviceUrl.defaultZone=http://eureka-server.marathon.mesos:8761/eureka/ --eureka.instance.preferIpAddress --eureka.instance.hostname=`hostname`",
+    "ports": [ 0 ] 
+}
