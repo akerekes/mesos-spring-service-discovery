@@ -5,7 +5,7 @@ eureka:
   server:
     enableSelfPreservation: false
   instance:
-    hostname: localhost
+    preferIpAddress: true
   client:
     registerWithEureka: false
     fetchRegistry: false
