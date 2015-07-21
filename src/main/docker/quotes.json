@@ -11,6 +11,18 @@
         "forcePullImage": true
       }
     },
-    "cmd": "java -jar /service-discovery-demo-0.0.1-SNAPSHOT.jar --spring.config.name=quotes-application --server.port=$PORT --eureka.client.serviceUrl.defaultZone=http://eureka-server.marathon.mesos:8761/eureka/ --eureka.instance.preferIpAddress --eureka.instance.hostname=`hostname`",
-    "ports": [ 0 ] 
+    "cmd": "java -jar /service-discovery-demo-0.0.1-SNAPSHOT.jar --spring.config.name=quotes-application --server.port=$PORT --eureka.server.host=eureka-server.marathon.mesos --eureka.server.port=8761 --eureka.instance.hostname=`hostname`",
+    "ports": [ 0 ],
+    "healthChecks": [
+     {
+       "path": "/",
+       "portIndex": 0,
+       "protocol": "HTTP",
+       "gracePeriodSeconds": 600,
+       "intervalSeconds": 15,
+       "timeoutSeconds": 10,
+       "maxConsecutiveFailures": 3,
+       "ignoreHttp1xx": false
+     }
+  ]
 }
