@@ -11,6 +11,12 @@ public class RandomNumberService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RandomNumberService.class);
 
+	public RandomNumberService() {
+		if (true) {
+			throw new RuntimeException("intentionally creating a failure");
+		}
+	}
+
 	public int getRandomNumber() {
 		LOGGER.info("Random number requested");
 		return new Random().nextInt(100);

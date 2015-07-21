@@ -11,10 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class RandomNumberApplication {
 
     public static void main(String[] args) {
-
-		if (true) {
-			throw new RuntimeException("intentionally creating a failure");
-		}
 		SpringApplication.run(RandomNumberApplication.class, args);
     }
 }
